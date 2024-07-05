@@ -1,97 +1,84 @@
--- local --
+--// Comet Ui Renew
 local me = game.Players.LocalPlayer
-local plrui = me.PlayerGui
-local black = Color3.new(0,0,0)
-local red = Color3.new(184,0,0)
-local white = Color3.new(1,1,1)
-local heading = "Comet Beta"
--- instance --
+local perui = me.PlayerGui
+local iy = ""
+local mf = Enum.Font.Oswald
+local w = Color3.new(1, 1, 1)
+local b = Color3.new(0, 0, 0)
+local r = Color3.new(1, 0, 0)
+local g = Color3.new(0, 1, 0)
+local y = Color3.new(1, 1, 0)
+--// instance 
 local Ui = Instance.new("ScreenGui")
-Ui.Name = "Ui"
-Ui.Parent = plrui
-local main = Instance.new("Frame")
-main.Name = "main"
-main.Size = UDim2.new(0.504, 0,0.728, 0)
-main.Position = UDim2.new(0.247, 0,0.136, 0)
-main.BackgroundColor3 = red
+Ui.Parent = perui
+local Loader =  Instance.new("Frame")
+Loader.Parent = Ui
+Loader.Size = UDim2.new(0.332,0,0.491,0)
+Loader.Position = UDim2.new(0.334, 0,0.255, 0)
+Loader.BackgroundColor3 = Color3.fromRGB(88, 88, 88)
+Loader.BackgroundTransparency = 0.3
+	--// Loader child
+	local Uic = Instance.new("UICorner")
+	Uic.CornerRadius = UDim.new(0,8)
+	Uic.Parent = Loader
+	local loadertxt = Instance.new("TextLabel")
+	loadertxt.BackgroundTransparency = 1
+	loadertxt.Position = UDim2.new(0.18,0,0.386,0)
+	loadertxt.Size = UDim2.new(0.638,0,0.228,0)
+	loadertxt.Parent = Loader
+	loadertxt.TextScaled = true
+	loadertxt.Text = "Loading"
+	loadertxt.Font = mf
+	loadertxt.TextColor3 = b
+--// main instance
+local main =  Instance.new("Frame")
 main.Parent = Ui
-local UiAsp = Instance.new("UIAspectRatioConstraint")
-UiAsp.Parent = main
-UiAsp.AspectRatio = 1.83
-local uicorner =  Instance.new("UICorner")
-uicorner.Parent = main
-uicorner.CornerRadius = UDim.new(0,8)
-local topbar = Instance.new("Frame")
-topbar.Size = UDim2.new(1,0,0.107,0)
-topbar.Parent = main
-topbar.BackgroundColor3 = black
-local uicorner =  Instance.new("UICorner")
-uicorner.Parent = topbar
-uicorner.CornerRadius = UDim.new(0,8)
-local sidebar = Instance.new("Frame")
-sidebar.Size = UDim2.new(0.058,0,1.0)
-sidebar.Parent = main
-sidebar.BackgroundColor3 = black
-local uicorner =  Instance.new("UICorner")
-uicorner.Parent = sidebar
-uicorner.CornerRadius = UDim.new(0,8)
-local sidebar2 = Instance.new("Frame")
-sidebar2.Size = UDim2.new(0.058,0,1.0)
-sidebar2.Position = UDim2.new(0.12,0,0)
-sidebar2.Parent = main
-sidebar2.BackgroundColor3 = black
-local uicorner =  Instance.new("UICorner")
-uicorner.Parent = sidebar2
-uicorner.CornerRadius = UDim.new(0,8)
-local cd = Instance.new("TextLabel")
-cd.Parent = main
-cd.BackgroundTransparency = 1
-cd.Position = UDim2.new(0.003,0,0,0)
-cd.Size = UDim2.new(0.289,0,0.107,0)
-cd.Font = Enum.Font.Oswald
-cd.Text = heading
-cd.TextScaled = true
-cd.TextColor3 = white
-local logo = Instance.new("ImageLabel")
-logo.Parent = main
-logo.BackgroundTransparency = 1
-logo.Size = UDim2.new(0.058,0,0.107,0)
-logo.Position = UDim2.new(0.942,0,0,0)
-logo.Image = "rbxassetid://18278373221"
--- drag ui script --
-local UIS = game:GetService('UserInputService')
-local frame = main
-local dragToggle = nil
-local dragSpeed = 0.01
-local dragStart = nil
-local startPos = nil
-
-local function updateInput(input)
-	local delta = input.Position - dragStart
-	local position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X,
-		startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-	game:GetService('TweenService'):Create(frame, TweenInfo.new(dragSpeed), {Position = position}):Play()
+main.Size = UDim2.new(0.581, 0,0.809, 0)
+main.Position = UDim2.new(0.209, 0,0.095, 0)
+main.BackgroundColor3 = Color3.fromRGB(88, 88, 88)
+main.BackgroundTransparency = 0.3
+main.Visible = false
+	--// main child
+	local Uic = Instance.new("UICorner")
+	Uic.CornerRadius = UDim.new(0,8)
+	Uic.Parent = main
+	local tab = Instance.new("Frame")
+	tab.Parent = main
+	tab.BackgroundTransparency = 0.3
+    tab.BackgroundColor3 = Color3.fromRGB(88, 88, 88)
+	tab.Position = UDim2.new(0.014, 0,0.019, 0)
+	tab.Size = UDim2.new(0.066, 0,0.962, 0)
+		--// tab child 
+		local Uic = Instance.new("UICorner")
+		Uic.CornerRadius = UDim.new(0,8)
+		Uic.Parent = tab
+		local b1 = Instance.new("Frame")
+		b1.Position = UDim2.new(0.101, 0,0.04, 0)
+		b1.Size = UDim2.new(0,35,0,35)
+		b1.Parent = tab
+			--// b1 child 
+			local Uic = Instance.new("UICorner")
+			Uic.CornerRadius = UDim.new(0,8)
+			Uic.Parent = b1
+			local b1c = Instance.new("TextButton")
+			b1c.Parent = b1
+			b1c.Size = UDim2.new(1,0,1,0)
+		
+loadertxt.Text = "Loading."
+wait(1)
+loadertxt.Text = "Loading.."
+wait(1)
+loadertxt.Text = "Loading..."
+wait(1)
+loadertxt.Text = "Loading"
+wait(1)
+loadertxt.Text = "Loading."
+wait(1)
+loadertxt.Text = "Loading.."
+wait(1)
+main.Visible = true
+Loader:Destroy()
+while true do
+	wait(1)
+	print(" NOT RELEASE YET")
 end
-
-frame.InputBegan:Connect(function(input)
-	if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then 
-		dragToggle = true
-		dragStart = input.Position
-		startPos = frame.Position
-		input.Changed:Connect(function()
-			if input.UserInputState == Enum.UserInputState.End then
-				dragToggle = false
-			end
-		end)
-	end
-end)
-
-UIS.InputChanged:Connect(function(input)
-	if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-		if dragToggle then
-			updateInput(input)
-		end
-	end
-end)
--- function --
-print("The Beta Has No Function")
